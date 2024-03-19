@@ -14,11 +14,11 @@ const app = express();
 
 //prepare cross origin for deployment
 app.use(cors(
-    // {
-    //     origin: ["https://nucleus-deployed.vercel.app"],
-    //     methods: ["POST", "GET", "PUT", "DELETE"],
-    //     credentials: true
-    // }
+    {
+        origin: ["https://nucleus-deployed.vercel.app"],
+        methods: ["POST", "GET", "PUT", "DELETE"],
+        credentials: true
+    }
 ));
 
 // parse data and require authentication for each endpoint
