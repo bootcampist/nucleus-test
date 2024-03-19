@@ -15,7 +15,7 @@ const app = express();
 //prepare cross origin for deployment
 app.use(cors(
     // {
-    //     origin: ["FRONTEND"],
+    //     origin: ["https://nucleus-deployed.vercel.app"],
     //     methods: ["POST", "GET", "PUT", "DELETE"],
     //     credentials: true
     // }
