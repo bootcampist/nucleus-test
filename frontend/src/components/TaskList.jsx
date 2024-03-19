@@ -50,7 +50,7 @@ useEffect(() => {
   //get all tasks from database and re-render when the tasks value changes
   useEffect(() => {
     if(user){
-      axios.get('http://localhost:3002/tasks', userData)
+      axios.get('https://nucleus-deploy.vercel.app/tasks', userData)
           .then(result => {let taskdb = result.data; return taskdb})
           .then(data => {setTasks(data)})
           .catch(err => console.log(err));
@@ -64,7 +64,7 @@ useEffect(() => {
       setTasks([...tasks, { id: tasks.length + 1, text: newTaskText }]);
       setNewTaskText("");
       setIsModalOpen(false);
-      axios.post('http://localhost:3002/tasks', {newTaskText}, userData) //send new task to database
+      axios.post('https://nucleus-deploy.vercel.app/tasks', {newTaskText}, userData) //send new task to database
         .then(result => {
             console.log('result', newTaskText, result)
           })
@@ -83,7 +83,7 @@ useEffect(() => {
       console.log('Task Data', taskData);
     setEditingTaskIndex(index);
     setNewTaskText(tasks[index].newTaskText); // Set the text of the editing task
-    axios.get('http://localhost:3002/tasks/'+id, userData) //get task from database by id
+    axios.get('https://nucleus-deploy.vercel.app/tasks/'+id, userData) //get task from database by id
         .then(result => {console.log('editTask',result)
             console.log('result',result.data.newTaskText)
         })
@@ -98,7 +98,7 @@ useEffect(() => {
       setTasks(updatedTasks);
       console.log('update task', id);
 
-      axios.put('http://localhost:3002/tasks/'+id, {newTaskText}, userData) //update task in the database with the input id
+      axios.put('https://nucleus-deploy.vercel.app/tasks/'+id, {newTaskText}, userData) //update task in the database with the input id
         .then(result => {
             console.log(result)
                     })
@@ -108,7 +108,7 @@ useEffect(() => {
   };
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:3002/tasks/'+id, userData) //delete task from the database with the input id
+    axios.delete('https://nucleus-deploy.vercel.app/tasks/'+id, userData) //delete task from the database with the input id
     .then(res => console.log(res))
     .catch(error => console.log(error))
 }
