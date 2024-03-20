@@ -10,7 +10,7 @@ const router = express.Router()
 
 
 //login route
-router.post('/api/user/login', loginUser)
+router.post('/login', loginUser)
 
 
 //signup route
