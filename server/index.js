@@ -13,13 +13,20 @@ const requireAuth = require('./middleware/requireAuth');
 const app = express(); 
 
 //prepare cross origin for deployment
+
 app.use(cors(
-    // {
-    //     origin: ["FRONTEND"],
-    //     methods: ["POST", "GET", "PUT", "DELETE"],
-    //     credentials: true
-    // }
+    {
+        origin: ["https://nucleus-deployed.vercel.app"],
+        methods: ["POST", "GET", "PUT", "DELETE"],
+        credentials: true
+    }
 ));
+
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.status(200).send();
+});
 
 // parse data and require authentication for each endpoint
 app.use(express.json());
